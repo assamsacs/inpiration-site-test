@@ -1,3 +1,25 @@
+function setupHeroSlideshow(images) {
+  const layerA = document.getElementById('heroBg0');
+  const layerB = document.getElementById('heroBg1');
+  if (!images || !images.length) return;
+
+  let idx = 0;
+  layerA.style.backgroundImage = `url('${images[0]}')`;
+  layerA.classList.add('active');
+  if (images.length < 2) return;
+
+  let active = layerA, inactive = layerB;
+  setInterval(() => {
+    idx = (idx + 1) % images.length;
+    inactive.style.backgroundImage = `url('${images[idx]}')`;
+    // force a reflow so the opacity transition actually fires
+    void inactive.offsetWidth;
+    inactive.classList.add('active');
+    active.classList.remove('active');
+    const tmp = active; active = inactive; inactive = tmp;
+  }, 6000);
+}
+
 async function loadContent() {
   let data;
   if (window.__INLINE_CONTENT__) {
@@ -18,8 +40,17 @@ async function loadContent() {
 
   // ---- Hero ----
   const hero = document.getElementById('heroSection');
-  hero.style.backgroundImage =
-    `linear-gradient(180deg, rgba(9,37,48,0.35) 0%, rgba(9,37,48,0.55) 55%, rgba(9,37,48,0.92) 100%), url('${data.hero.bgImage}')`;
+  const heroImages = data.hero.bgImages && data.hero.bgImages.length
+    ? data.hero.bgImages
+    : (data.hero.bgImage ? [data.hero.bgImage] : []);
+  const existingInner = document.getElementById('heroContent').outerHTML;
+  hero.innerHTML = `
+    <div class="hero-bg-layer" id="heroBg0"></div>
+    <div class="hero-bg-layer" id="heroBg1"></div>
+    <div class="hero-overlay"></div>
+    ${existingInner}
+  `;
+  setupHeroSlideshow(heroImages);
   document.getElementById('heroContent').innerHTML = `
     <p class="eyebrow">${data.hero.eyebrow}</p>
     <h1>${data.hero.headline}</h1>

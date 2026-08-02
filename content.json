@@ -3,7 +3,11 @@
     "eyebrow": "Jorhat & Upper Assam · Since 2013",
     "headline": "Sustainable inclusion for every citizen of Assam.",
     "subhead": "Inspiration is a registered voluntary organization working across health, environment, education, livelihoods, and disaster response — in direct partnership with government health systems, local institutions, and community volunteers.",
-    "bgImage": "images/mobile-icic-van-camp.jpeg"
+    "bgImages": [
+      "images/mobile-icic-van-camp.jpeg",
+      "images/flood-relief-team.jpeg",
+      "images/env-day-tree-plantation.jpeg"
+    ]
   },
   "stats": [
     { "n": "2013", "l": "Founded & Registered" },
