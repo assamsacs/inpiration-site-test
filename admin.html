@@ -118,10 +118,11 @@
 
     <fieldset>
       <legend>Vision &amp; Mission</legend>
+      <label>Slogan / tagline</label><input type="text" id="f-slogan">
       <label>Vision</label><textarea id="f-vision" rows="2"></textarea>
       <label>Mission</label><textarea id="f-mission" rows="2"></textarea>
-      <label>Prime objectives (one per line)</label>
-      <textarea id="f-objectives" rows="6"></textarea>
+      <label>Approach &amp; strategy points (one per line)</label>
+      <textarea id="f-objectives" rows="8"></textarea>
     </fieldset>
 
     <fieldset>
@@ -181,6 +182,8 @@
 
     <fieldset>
       <legend>Our approach</legend>
+      <label>Section subheading</label>
+      <textarea id="f-approach-subhead" rows="2"></textarea>
       <div id="approachList"></div>
       <button class="btn btn-outline btn-small" type="button" id="addApproachBtn">+ Add point</button>
     </fieldset>
@@ -349,6 +352,7 @@ function renderForm() {
   }
   renderHeroImages();
 
+  $('f-slogan').value = state.slogan || '';
   $('f-vision').value = state.vision;
   $('f-mission').value = state.mission;
   $('f-objectives').value = state.objectives.join('\n');
@@ -367,6 +371,7 @@ function renderForm() {
   $('f-donate-qr-preview').src = state.donate.qrImage;
 
   $('f-partners').value = state.partners.join('\n');
+  $('f-approach-subhead').value = state.approachSubhead || '';
 
   renderPrograms();
   renderYears();
@@ -534,9 +539,11 @@ function renderApproach() {
     card.className = 'card';
     card.innerHTML = `
       <button class="del" data-i="${i}">Remove ✕</button>
+      <label>Short tag (e.g. "Reach", "Method")</label><input type="text" data-f="tag" value="${escAttr(a.tag || '')}">
       <label>Title</label><input type="text" data-f="title" value="${escAttr(a.title)}">
       <label>Description</label><textarea data-f="desc" rows="2">${a.desc}</textarea>
     `;
+    card.querySelector('[data-f="tag"]').addEventListener('input', e => a.tag = e.target.value);
     card.querySelector('[data-f="title"]').addEventListener('input', e => a.title = e.target.value);
     card.querySelector('[data-f="desc"]').addEventListener('input', e => a.desc = e.target.value);
     card.querySelector('.del').addEventListener('click', () => { state.approach.splice(i, 1); renderApproach(); });
@@ -544,7 +551,7 @@ function renderApproach() {
   });
 }
 $('addApproachBtn').addEventListener('click', () => {
-  state.approach.push({ title: 'New point', desc: '' });
+  state.approach.push({ tag: 'New', title: 'New point', desc: '' });
   renderApproach();
 });
 
@@ -633,6 +640,7 @@ function syncSimpleFields() {
   state.hero.headline = $('f-hero-headline').value;
   state.hero.subhead = $('f-hero-subhead').value;
 
+  state.slogan = $('f-slogan').value;
   state.vision = $('f-vision').value;
   state.mission = $('f-mission').value;
   state.objectives = $('f-objectives').value.split('\n').map(s => s.trim()).filter(Boolean);
@@ -649,6 +657,7 @@ function syncSimpleFields() {
   state.donate.upiId = $('f-donate-upi').value;
 
   state.partners = $('f-partners').value.split('\n').map(s => s.trim()).filter(Boolean);
+  state.approachSubhead = $('f-approach-subhead').value;
 }
 
 // ---------- save ----------

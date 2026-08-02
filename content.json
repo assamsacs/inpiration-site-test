@@ -17,24 +17,30 @@
     { "n": "3", "l": "Annual Reports Published" }
   ],
   "about": {
-    "intro": "Inspiration was established in 2013 by a group of dedicated youths in Titabor, Jorhat district. It is a non-government, non-political, non-profit, secular voluntary organization governed by a seven-member executive committee.",
+    "intro": "Established in 2013, Inspiration is a non-governmental organization dedicated to empowering marginalised communities through sustainable development initiatives. We work in close collaboration with local communities, government agencies, and fellow NGOs to drive positive change. Our approach emphasises participatory processes — prioritising the needs and voices of vulnerable populations — through community-based services, self-sustainable livelihood opportunities, and people-centred development. We believe true development is achieved only through the active participation of the people themselves: by the people, for the people.",
     "badges": [
       "Reg. No. JOR/238/F/13 (2013–14)",
       "Societies Registration Act XXI of 1860",
       "PAN: AACAI8591D",
+      "NGO Darpan ID: AS/2024/0435862",
+      "12AA Reg. (Tax Exemption), URN: AACAI8591DE20241",
+      "80G: Application in process",
       "Regd. Office: Chipaha Satra, Titabor, Jorhat"
     ],
     "photo": "inspiration-images/images/community-hiv-screening.jpeg"
   },
-  "vision": "Egalitarianism and equity.",
-  "mission": "Sustainable inclusion of socially and economically excluded people through appropriate solutions.",
+  "slogan": "Holding hands, uplifting lives",
+  "vision": "A world where all individuals have equal access to opportunities, resources, and services, enabling them to live with dignity and respect. We envision a future where marginalised communities are empowered to take control of their lives, make informed decisions, and contribute to the development of their communities.",
+  "mission": "Empowerment For All (EFA): improving the lives of marginalised communities through education, healthcare, and economic empowerment. We strive to provide access to quality education, healthcare services, and economic opportunities — enabling individuals to break the cycle of poverty and achieve their full potential.",
   "objectives": [
-    "Conduct research, studies and action-oriented projects on social, cultural, economic, and environmental issues.",
-    "Improve the quality of life of disadvantaged and marginalised communities.",
-    "Promote conservation and sustainable management of natural resources.",
-    "Design and implement programs in health & family welfare, education, livelihood development, and environment & natural resource management.",
-    "Strengthen community institutions and promote participatory planning.",
-    "Build capacity through training, research, and extension activities."
+    "Community Engagement — build trust and partnerships with marginalised communities, understanding their needs and priorities.",
+    "Participatory Development — empower communities to take ownership of development initiatives, ensuring sustainability and self-reliance.",
+    "Inclusive and Equitable — foster inclusive environments, promoting equal opportunities and social justice for all.",
+    "Capacity Building — enhance community capacities through training, education, and skill development.",
+    "Resource Mobilization — leverage resources from governments, donors, and private sectors to support community development initiatives.",
+    "Education and Skills Development — implement programs focusing on education, vocational training, and livelihood skills.",
+    "Health and Well-being — provide access to healthcare services, promote healthy practices, and support mental well-being.",
+    "Economic Empowerment — facilitate economic growth through entrepreneurship development, microfinance, and income-generation activities."
   ],
   "programs": [
     {

@@ -38,8 +38,9 @@ async function loadContent() {
     }
   }
 
-  // ---- Logo ----
+  // ---- Logo & slogan ----
   if (data.logo) document.getElementById('navLogo').src = data.logo;
+  if (data.slogan) document.getElementById('navTagline').textContent = data.slogan;
 
   // ---- Hero ----
   const hero = document.getElementById('heroSection');
@@ -56,6 +57,7 @@ async function loadContent() {
   setupHeroSlideshow(heroImages);
   document.getElementById('heroContent').innerHTML = `
     <p class="eyebrow">${data.hero.eyebrow}</p>
+    ${data.slogan ? `<p class="hero-slogan">"${data.slogan}"</p>` : ''}
     <h1>${data.hero.headline}</h1>
     <p class="lede">${data.hero.subhead}</p>
     <div class="cta-row">
