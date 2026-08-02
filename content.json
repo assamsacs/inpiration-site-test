@@ -1,13 +1,13 @@
 {
-  "logo": "images/logo.jpg",
+  "logo": "inspiration-images/images/logo.jpg",
   "hero": {
     "eyebrow": "Jorhat & Upper Assam · Since 2013",
     "headline": "Sustainable inclusion for every citizen of Assam.",
     "subhead": "Inspiration is a registered voluntary organization working across health, environment, education, livelihoods, and disaster response — in direct partnership with government health systems, local institutions, and community volunteers.",
     "bgImages": [
-      "images/mobile-icic-van-camp.jpeg",
-      "images/flood-relief-team.jpeg",
-      "images/env-day-tree-plantation.jpeg"
+      "inspiration-images/images/mobile-icic-van-camp.jpeg",
+      "inspiration-images/images/flood-relief-team.jpeg",
+      "inspiration-images/images/env-day-tree-plantation.jpeg"
     ]
   },
   "stats": [
@@ -24,7 +24,7 @@
       "PAN: AACAI8591D",
       "Regd. Office: Chipaha Satra, Titabor, Jorhat"
     ],
-    "photo": "images/community-hiv-screening.jpeg"
+    "photo": "inspiration-images/images/community-hiv-screening.jpeg"
   },
   "vision": "Egalitarianism and equity.",
   "mission": "Sustainable inclusion of socially and economically excluded people through appropriate solutions.",
@@ -42,42 +42,42 @@
       "title": "HIV/AIDS & Public Health",
       "desc": "Community-based HIV/AIDS awareness, screening, and mobile health camps run under our Targeted Intervention project (TI Inspiration, Jorhat), in partnership with ASACS and district health authorities.",
       "examples": "World AIDS Day camps with ASACS & JDHS Jorhat (2022–24) · Mobile ICTC van camps, Kabuganj · Awareness camps, Borhola & West Titabor · Free health screening camps",
-      "image": "images/mobile-icic-van-camp.jpeg"
+      "image": "inspiration-images/images/mobile-icic-van-camp.jpeg"
     },
     {
       "tag": "Emergency Response",
       "title": "Disaster Response & Flood Relief",
       "desc": "Rapid-response relief coordination for communities across the Brahmaputra floodplain, delivering essential supplies and free health camps through a locally mobilised volunteer network.",
       "examples": "Relief convoy, Guwahati → Sivasagar · Free health camps for flood-affected people, Namchungi & Kachajan Tea Estate · Relief kit distribution in flood-hit villages",
-      "image": "images/flood-relief-team.jpeg"
+      "image": "inspiration-images/images/flood-relief-team.jpeg"
     },
     {
       "tag": "Environment",
       "title": "Environment & Natural Resources",
       "desc": "Annual World Environment Day plantation drives run with local colleges and schools, part of our broader commitment to conservation and sustainable resource management.",
       "examples": "500 saplings, Nabin Bordoloi College (2024) · 150 saplings, CKB College (2023) · Plantation drive, Mihiram Saikia HS School (2022)",
-      "image": "images/env-day-tree-plantation.jpeg"
+      "image": "inspiration-images/images/env-day-tree-plantation.jpeg"
     },
     {
       "tag": "Youth & Culture",
       "title": "Education, Culture & Youth Development",
       "desc": "Life-skills and cultural programming for young people — from folk-arts workshops to school-based competitions marking national and cultural observances.",
       "examples": "11-day Bihu Dance Workshop, Assam Bhawan, Kolkata · Children's Day art/quiz/essay competitions · Kati Bihu & All-Assam letter-writing competition",
-      "image": "images/bihu-workshop.jpeg"
+      "image": "inspiration-images/images/bihu-workshop.jpeg"
     },
     {
       "tag": "Civic Life",
       "title": "Blood Donation & National Observances",
       "desc": "Regular blood donation camps and civic participation in national observances, building community trust and engagement around our health programming.",
       "examples": "Free blood donation camp, Bihu 2024 · Blood donation & health check-up, New Year 2025 · Independence Day, Republic Day & Gandhi Jyanti observations",
-      "image": "images/bihu-blood-donation.jpeg"
+      "image": "inspiration-images/images/bihu-blood-donation.jpeg"
     },
     {
       "tag": "Livelihood & Rights",
       "title": "Workers' Welfare, Women & Social Justice",
       "desc": "Solidarity events for informal-sector workers, women's empowerment observances, and youth engagement programs that build community bonds.",
       "examples": "May Day with construction & tempo-driver unions · International Women's Day: felicitation & old-age home outreach · World Drug Day awareness, CKB Commerce College",
-      "image": "images/independence-day.jpeg"
+      "image": "inspiration-images/images/independence-day.jpeg"
     }
   ],
   "activityYears": [
@@ -140,17 +140,17 @@
     }
   ],
   "gallery": [
-    { "image": "images/mobile-icic-van-camp.jpeg", "alt": "Mobile ICTC van camp", "size": "wide" },
-    { "image": "images/bihu-workshop.jpeg", "alt": "Bihu dance workshop", "size": "tall" },
-    { "image": "images/world-aids-day.jpeg", "alt": "World AIDS Day rally", "size": "" },
-    { "image": "images/community-hiv-screening.jpeg", "alt": "Community HIV screening meeting", "size": "" },
-    { "image": "images/env-day-tree-plantation.jpeg", "alt": "Tree plantation drive", "size": "" },
-    { "image": "images/childrens-day.jpeg", "alt": "Children's Day celebration", "size": "wide" },
-    { "image": "images/flood-relief-team.jpeg", "alt": "Flood relief volunteer team", "size": "" },
-    { "image": "images/relief-kit-distribution.jpeg", "alt": "Relief kit distribution", "size": "" },
-    { "image": "images/flood-health-camp.jpeg", "alt": "Health camp for flood-affected families", "size": "" },
-    { "image": "images/independence-day.jpeg", "alt": "Independence Day celebration", "size": "" },
-    { "image": "images/bihu-blood-donation.jpeg", "alt": "Blood donation camp during Bihu", "size": "" }
+    { "image": "inspiration-images/images/mobile-icic-van-camp.jpeg", "alt": "Mobile ICTC van camp", "size": "wide" },
+    { "image": "inspiration-images/images/bihu-workshop.jpeg", "alt": "Bihu dance workshop", "size": "tall" },
+    { "image": "inspiration-images/images/world-aids-day.jpeg", "alt": "World AIDS Day rally", "size": "" },
+    { "image": "inspiration-images/images/community-hiv-screening.jpeg", "alt": "Community HIV screening meeting", "size": "" },
+    { "image": "inspiration-images/images/env-day-tree-plantation.jpeg", "alt": "Tree plantation drive", "size": "" },
+    { "image": "inspiration-images/images/childrens-day.jpeg", "alt": "Children's Day celebration", "size": "wide" },
+    { "image": "inspiration-images/images/flood-relief-team.jpeg", "alt": "Flood relief volunteer team", "size": "" },
+    { "image": "inspiration-images/images/relief-kit-distribution.jpeg", "alt": "Relief kit distribution", "size": "" },
+    { "image": "inspiration-images/images/flood-health-camp.jpeg", "alt": "Health camp for flood-affected families", "size": "" },
+    { "image": "inspiration-images/images/independence-day.jpeg", "alt": "Independence Day celebration", "size": "" },
+    { "image": "inspiration-images/images/bihu-blood-donation.jpeg", "alt": "Blood donation camp during Bihu", "size": "" }
   ],
   "partners": [
     "Assam State AIDS Control Society (ASACS)",
@@ -172,7 +172,7 @@
   ],
   "donate": {
     "note": "Inspiration is a registered society (Reg. No. JOR/238/F/13). Donations support our health camps, flood relief convoys, and community programs across Jorhat and Upper Assam.",
-    "qrImage": "images/upi-qr-donate.jpeg",
+    "qrImage": "inspiration-images/images/upi-qr-donate.jpeg",
     "upiId": "inspiration@ucobank"
   },
   "contact": {
