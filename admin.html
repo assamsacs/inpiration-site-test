@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspiration — Site Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#0e3a4c; --navy-deep:#092530; --teal:#146b79; --coral:#e4602f; --coral-deep:#c14d22;
+    --gold:#f0a73c; --paper:#fbfaf7; --paper-deep:#f1efe8; --ink:#16232a; --grey:#5d6b72;
+    --line:rgba(22,35,42,.14); --display:"Sora",sans-serif; --body:"Inter",sans-serif; --mono:"IBM Plex Mono",monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); line-height:1.55; padding-bottom:80px; }
+  header { background:var(--navy); color:#fff; padding:20px 24px; position:sticky; top:0; z-index:20; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  header h1 { font-family:var(--display); font-size:19px; margin:0; }
+  header .sub { font-family:var(--mono); font-size:11px; color:#b9cdd3; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 28px 20px; }
+  fieldset { border:1px solid var(--line); border-radius:8px; padding:22px 24px; margin-bottom:22px; background:#fff; }
+  legend { font-family:var(--display); font-weight:700; font-size:16px; color:var(--navy); padding:0 8px; }
+  label { display:block; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--grey); margin:14px 0 6px; }
+  label:first-child { margin-top:0; }
+  input[type=text], input[type=email], input[type=password], input[type=url], textarea, select {
+    width:100%; font-family:var(--body); font-size:14.5px; padding:10px 12px; border:1px solid var(--line); border-radius:5px; background:var(--paper); color:var(--ink);
+  }
+  textarea { resize:vertical; min-height:70px; }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:640px){ .row{ grid-template-columns:1fr; } }
+  .card { border:1px solid var(--line); border-radius:6px; padding:16px; margin-bottom:12px; background:var(--paper-deep); position:relative; }
+  .card .del { position:absolute; top:10px; right:10px; background:none; border:none; color:var(--coral); cursor:pointer; font-size:13px; font-family:var(--mono); }
+  .btn { display:inline-block; font-family:var(--body); font-weight:600; font-size:14px; padding:10px 20px; border-radius:5px; border:1.5px solid transparent; cursor:pointer; text-decoration:none; }
+  .btn-primary { background:var(--coral); color:#fff; }
+  .btn-primary:hover { background:var(--coral-deep); }
+  .btn-outline { background:#fff; border-color:var(--navy); color:var(--navy); }
+  .btn-outline:hover { background:var(--navy); color:#fff; }
+  .btn-small { font-size:12.5px; padding:7px 14px; }
+  .thumb-preview { width:100%; max-width:220px; border-radius:6px; margin:8px 0; display:block; }
+  .status { font-family:var(--mono); font-size:12.5px; padding:10px 14px; border-radius:5px; margin-bottom:16px; display:none; }
+  .status.show { display:block; }
+  .status.ok { background:#e2f4e6; color:#1e6b34; }
+  .status.err { background:#fce7e2; color:#a13a2e; }
+  .status.busy { background:#eef3f6; color:var(--navy); }
+  .help { font-size:12.5px; color:var(--grey); margin-top:6px; }
+  .save-bar { position:fixed; bottom:0; left:0; right:0; background:var(--navy-deep); padding:14px 24px; display:flex; justify-content:center; gap:14px; z-index:30; box-shadow:0 -4px 14px rgba(0,0,0,.15); }
+  .locked { opacity:.5; pointer-events:none; }
+  a { color: var(--teal); }
+  details summary { cursor:pointer; font-family:var(--mono); font-size:12px; color:var(--grey); margin-bottom:10px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Inspiration — Site Editor</h1>
+    <div class="sub">Edits save directly to your GitHub repo. GitHub Pages will republish within 1–2 minutes.</div>
+  </div>
+  <span id="connStatus" style="font-family:var(--mono);font-size:12px;">Not connected</span>
+</header>
+
+<div class="wrap">
+
+  <fieldset id="connectFieldset">
+    <legend>1. Connect to your GitHub repo</legend>
+    <div class="row">
+      <div>
+        <label for="ghOwner">GitHub username / organisation</label>
+        <input type="text" id="ghOwner" placeholder="e.g. inspiration-ngo">
+      </div>
+      <div>
+        <label for="ghRepo">Repository name</label>
+        <input type="text" id="ghRepo" placeholder="e.g. inspiration-website">
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="ghBranch">Branch</label>
+        <input type="text" id="ghBranch" value="main">
+      </div>
+      <div>
+        <label for="ghToken">Personal access token</label>
+        <input type="password" id="ghToken" placeholder="github_pat_...">
+      </div>
+    </div>
+    <p class="help">
+      Create a <strong>fine-grained token</strong> at
+      <a href="https://github.com/settings/tokens?type=beta" target="_blank">github.com/settings/tokens</a> →
+      "Generate new token" → limit it to this one repository → under Permissions, set
+      <strong>Contents: Read and write</strong> → Generate. Paste it above. It's saved only in
+      this browser (never sent anywhere except api.github.com) — don't share it or paste it elsewhere.
+    </p>
+    <button class="btn btn-outline" id="connectBtn" type="button">Connect &amp; load content</button>
+    <div class="status" id="connectStatus"></div>
+  </fieldset>
+
+  <div id="editorArea" class="locked">
+
+    <div class="status" id="saveStatus"></div>
+
+    <fieldset>
+      <legend>Hero banner</legend>
+      <label>Eyebrow line</label><input type="text" id="f-hero-eyebrow">
+      <label>Headline</label><textarea id="f-hero-headline" rows="2"></textarea>
+      <label>Subheading</label><textarea id="f-hero-subhead" rows="3"></textarea>
+      <label>Background photo</label>
+      <img class="thumb-preview" id="f-hero-bg-preview">
+      <input type="file" id="f-hero-bg-file" accept="image/*">
+      <p class="help">Uploading a new photo replaces the hero background image.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Vision &amp; Mission</legend>
+      <label>Vision</label><textarea id="f-vision" rows="2"></textarea>
+      <label>Mission</label><textarea id="f-mission" rows="2"></textarea>
+      <label>Prime objectives (one per line)</label>
+      <textarea id="f-objectives" rows="6"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>About &amp; credibility badges</legend>
+      <label>Intro paragraph</label><textarea id="f-about-intro" rows="3"></textarea>
+      <label>Badges (one per line — e.g. registration number, PAN, etc.)</label>
+      <textarea id="f-about-badges" rows="4"></textarea>
+      <label>About photo</label>
+      <img class="thumb-preview" id="f-about-photo-preview">
+      <input type="file" id="f-about-photo-file" accept="image/*">
+    </fieldset>
+
+    <fieldset>
+      <legend>Contact &amp; address</legend>
+      <label>Registered address</label><textarea id="f-contact-address" rows="2"></textarea>
+      <label>Email</label><input type="text" id="f-contact-email">
+      <label>Phone numbers (one per line)</label><textarea id="f-contact-phones" rows="3"></textarea>
+      <label>Registration details</label><input type="text" id="f-contact-reg">
+    </fieldset>
+
+    <fieldset>
+      <legend>Donate section</legend>
+      <label>Note</label><textarea id="f-donate-note" rows="2"></textarea>
+      <label>UPI ID</label><input type="text" id="f-donate-upi">
+      <label>QR code image</label>
+      <img class="thumb-preview" id="f-donate-qr-preview">
+      <input type="file" id="f-donate-qr-file" accept="image/*">
+    </fieldset>
+
+    <fieldset>
+      <legend>Programs / areas of work</legend>
+      <div id="programsList"></div>
+      <button class="btn btn-outline btn-small" type="button" id="addProgramBtn">+ Add program</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Activities by year</legend>
+      <p class="help">Each year has its own tab on the site. Add a new year, or add activities inside an existing one.</p>
+      <div id="yearsList"></div>
+      <button class="btn btn-outline btn-small" type="button" id="addYearBtn">+ Add a new year tab</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Photo gallery</legend>
+      <div id="galleryList"></div>
+      <label>Add a new photo</label>
+      <input type="file" id="galleryFile" accept="image/*">
+      <input type="text" id="galleryAlt" placeholder="Short caption / alt text" style="margin-top:8px;">
+      <button class="btn btn-outline btn-small" type="button" id="addGalleryBtn" style="margin-top:10px;">+ Add to gallery</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Partner organisations</legend>
+      <label>One partner per line</label>
+      <textarea id="f-partners" rows="6"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Our approach</legend>
+      <div id="approachList"></div>
+      <button class="btn btn-outline btn-small" type="button" id="addApproachBtn">+ Add point</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Stats strip</legend>
+      <div id="statsList"></div>
+    </fieldset>
+
+  </div>
+</div>
+
+<div class="save-bar locked" id="saveBar">
+  <button class="btn btn-outline" id="reloadBtn" type="button">Reload from GitHub</button>
+  <button class="btn btn-primary" id="saveBtn" type="button">Save changes to site</button>
+</div>
+
+<script>
+let state = null;
+let contentSha = null;
+let creds = null;
+
+const $ = id => document.getElementById(id);
+const editorArea = $('editorArea');
+const saveBar = $('saveBar');
+
+function setStatus(el, msg, type) {
+  el.textContent = msg;
+  el.className = 'status show ' + type;
+}
+function clearStatus(el) { el.className = 'status'; }
+
+// ---------- credential persistence (this browser only) ----------
+function loadSavedCreds() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('inspiration_admin_creds') || 'null');
+    if (saved) {
+      $('ghOwner').value = saved.owner || '';
+      $('ghRepo').value = saved.repo || '';
+      $('ghBranch').value = saved.branch || 'main';
+      $('ghToken').value = saved.token || '';
+    }
+  } catch (e) {}
+}
+function saveCreds(c) {
+  localStorage.setItem('inspiration_admin_creds', JSON.stringify(c));
+}
+loadSavedCreds();
+
+// ---------- GitHub API helpers ----------
+async function ghGet(path) {
+  const url = `https://api.github.com/repos/${creds.owner}/${creds.repo}/contents/${path}?ref=${creds.branch}`;
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${creds.token}`, Accept: 'application/vnd.github+json' } });
+  if (!res.ok) throw new Error(`GET ${path} failed (${res.status})`);
+  return res.json();
+}
+async function ghPut(path, base64Content, message, sha) {
+  const url = `https://api.github.com/repos/${creds.owner}/${creds.repo}/contents/${path}`;
+  const body = { message, content: base64Content, branch: creds.branch };
+  if (sha) body.sha = sha;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${creds.token}`, Accept: 'application/vnd.github+json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(`Save to ${path} failed (${res.status}): ${err.message || 'unknown error'}`);
+  }
+  return res.json();
+}
+function utf8ToBase64(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+function slugify(name) {
+  return name.toLowerCase().replace(/[^a-z0-9.]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+async function uploadImage(file, folder = 'images') {
+  const base64 = await fileToBase64(file);
+  const ts = Date.now();
+  const path = `${folder}/${ts}-${slugify(file.name)}`;
+  await ghPut(path, base64, `Upload image via site editor: ${file.name}`);
+  return path;
+}
+
+// ---------- connect & load ----------
+$('connectBtn').addEventListener('click', async () => {
+  const owner = $('ghOwner').value.trim();
+  const repo = $('ghRepo').value.trim();
+  const branch = $('ghBranch').value.trim() || 'main';
+  const token = $('ghToken').value.trim();
+  const statusEl = $('connectStatus');
+  if (!owner || !repo || !token) {
+    setStatus(statusEl, 'Please fill in owner, repo, and token.', 'err');
+    return;
+  }
+  creds = { owner, repo, branch, token };
+  setStatus(statusEl, 'Connecting…', 'busy');
+  try {
+    const file = await ghGet('content.json');
+    contentSha = file.sha;
+    state = JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/\n/g, '')))));
+    saveCreds(creds);
+    setStatus(statusEl, 'Connected. Content loaded below.', 'ok');
+    $('connStatus').textContent = `Connected: ${owner}/${repo}`;
+    editorArea.classList.remove('locked');
+    saveBar.classList.remove('locked');
+    renderForm();
+  } catch (err) {
+    setStatus(statusEl, err.message, 'err');
+  }
+});
+
+$('reloadBtn').addEventListener('click', () => $('connectBtn').click());
+
+// ---------- render form from state ----------
+function renderForm() {
+  $('f-hero-eyebrow').value = state.hero.eyebrow;
+  $('f-hero-headline').value = state.hero.headline;
+  $('f-hero-subhead').value = state.hero.subhead;
+  $('f-hero-bg-preview').src = state.hero.bgImage;
+
+  $('f-vision').value = state.vision;
+  $('f-mission').value = state.mission;
+  $('f-objectives').value = state.objectives.join('\n');
+
+  $('f-about-intro').value = state.about.intro;
+  $('f-about-badges').value = state.about.badges.join('\n');
+  $('f-about-photo-preview').src = state.about.photo;
+
+  $('f-contact-address').value = state.contact.address;
+  $('f-contact-email').value = state.contact.email;
+  $('f-contact-phones').value = state.contact.phones.join('\n');
+  $('f-contact-reg').value = state.contact.registration;
+
+  $('f-donate-note').value = state.donate.note;
+  $('f-donate-upi').value = state.donate.upiId;
+  $('f-donate-qr-preview').src = state.donate.qrImage;
+
+  $('f-partners').value = state.partners.join('\n');
+
+  renderPrograms();
+  renderYears();
+  renderGallery();
+  renderApproach();
+  renderStats();
+}
+
+// ---- Programs ----
+function renderPrograms() {
+  const el = $('programsList');
+  el.innerHTML = '';
+  state.programs.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <button class="del" data-i="${i}">Remove ✕</button>
+      <label>Tag</label><input type="text" data-f="tag" value="${escAttr(p.tag)}">
+      <label>Title</label><input type="text" data-f="title" value="${escAttr(p.title)}">
+      <label>Description</label><textarea data-f="desc" rows="2">${p.desc}</textarea>
+      <label>Example activities (short line)</label><textarea data-f="examples" rows="2">${p.examples}</textarea>
+      <label>Photo</label>
+      <img class="thumb-preview" src="${p.image}">
+      <input type="file" data-f="image" accept="image/*">
+    `;
+    ['tag','title','desc','examples'].forEach(f => {
+      card.querySelector(`[data-f="${f}"]`).addEventListener('input', e => state.programs[i][f] = e.target.value);
+    });
+    card.querySelector('[data-f="image"]').addEventListener('change', async e => {
+      if (!e.target.files[0]) return;
+      const path = await uploadImage(e.target.files[0]);
+      state.programs[i].image = path;
+      card.querySelector('img').src = path;
+    });
+    card.querySelector('.del').addEventListener('click', () => { state.programs.splice(i, 1); renderPrograms(); });
+    el.appendChild(card);
+  });
+}
+$('addProgramBtn').addEventListener('click', () => {
+  state.programs.push({ tag: 'New area', title: 'New program', desc: '', examples: '', image: state.programs[0]?.image || '' });
+  renderPrograms();
+});
+
+// ---- Activity years ----
+function renderYears() {
+  const el = $('yearsList');
+  el.innerHTML = '';
+  state.activityYears.forEach((y, yi) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <button class="del" data-yi="${yi}">Remove year ✕</button>
+      <label>Tab label</label><input type="text" data-f="label" value="${escAttr(y.label)}">
+      <div id="itemsFor-${yi}"></div>
+      <button class="btn btn-outline btn-small" type="button" data-add="${yi}">+ Add activity to this year</button>
+    `;
+    card.querySelector('[data-f="label"]').addEventListener('input', e => y.label = e.target.value);
+    card.querySelector('.del').addEventListener('click', () => { state.activityYears.splice(yi, 1); renderYears(); });
+    el.appendChild(card);
+
+    const itemsWrap = card.querySelector(`#itemsFor-${yi}`);
+    y.items.forEach((a, ai) => {
+      const row = document.createElement('div');
+      row.className = 'card';
+      row.style.background = '#fff';
+      row.innerHTML = `
+        <button class="del" data-ai="${ai}">Remove ✕</button>
+        <label>Date</label><input type="text" data-f="date" value="${escAttr(a.date)}">
+        <label>Title</label><input type="text" data-f="title" value="${escAttr(a.title)}">
+        <label>Description</label><textarea data-f="desc" rows="2">${a.desc}</textarea>
+      `;
+      ['date','title','desc'].forEach(f => {
+        row.querySelector(`[data-f="${f}"]`).addEventListener('input', e => a[f] = e.target.value);
+      });
+      row.querySelector('.del').addEventListener('click', () => { y.items.splice(ai, 1); renderYears(); });
+      itemsWrap.appendChild(row);
+    });
+
+    card.querySelector('[data-add]').addEventListener('click', () => {
+      y.items.push({ date: '', title: 'New activity', desc: '' });
+      renderYears();
+    });
+  });
+}
+$('addYearBtn').addEventListener('click', () => {
+  const label = prompt('Label for the new year tab (e.g. "2026–27")');
+  if (!label) return;
+  state.activityYears.unshift({ id: 'y' + Date.now(), label, items: [] });
+  renderYears();
+});
+
+// ---- Gallery ----
+function renderGallery() {
+  const el = $('galleryList');
+  el.innerHTML = '';
+  state.gallery.forEach((g, i) => {
+    const row = document.createElement('div');
+    row.className = 'card';
+    row.style.display = 'flex';
+    row.style.gap = '14px';
+    row.style.alignItems = 'center';
+    row.innerHTML = `
+      <img src="${g.image}" style="width:90px;height:70px;object-fit:cover;border-radius:4px;flex-shrink:0;">
+      <input type="text" data-f="alt" value="${escAttr(g.alt)}" style="flex:1;">
+      <button class="del" data-i="${i}" style="position:static;">Remove ✕</button>
+    `;
+    row.querySelector('[data-f="alt"]').addEventListener('input', e => g.alt = e.target.value);
+    row.querySelector('.del').addEventListener('click', () => { state.gallery.splice(i, 1); renderGallery(); });
+    el.appendChild(row);
+  });
+}
+$('addGalleryBtn').addEventListener('click', async () => {
+  const file = $('galleryFile').files[0];
+  if (!file) { alert('Choose a photo first.'); return; }
+  const path = await uploadImage(file);
+  state.gallery.push({ image: path, alt: $('galleryAlt').value || 'Inspiration program photo', size: '' });
+  $('galleryFile').value = '';
+  $('galleryAlt').value = '';
+  renderGallery();
+});
+
+// ---- Approach ----
+function renderApproach() {
+  const el = $('approachList');
+  el.innerHTML = '';
+  state.approach.forEach((a, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <button class="del" data-i="${i}">Remove ✕</button>
+      <label>Title</label><input type="text" data-f="title" value="${escAttr(a.title)}">
+      <label>Description</label><textarea data-f="desc" rows="2">${a.desc}</textarea>
+    `;
+    card.querySelector('[data-f="title"]').addEventListener('input', e => a.title = e.target.value);
+    card.querySelector('[data-f="desc"]').addEventListener('input', e => a.desc = e.target.value);
+    card.querySelector('.del').addEventListener('click', () => { state.approach.splice(i, 1); renderApproach(); });
+    el.appendChild(card);
+  });
+}
+$('addApproachBtn').addEventListener('click', () => {
+  state.approach.push({ title: 'New point', desc: '' });
+  renderApproach();
+});
+
+// ---- Stats ----
+function renderStats() {
+  const el = $('statsList');
+  el.innerHTML = '';
+  state.stats.forEach((s, i) => {
+    const row = document.createElement('div');
+    row.className = 'row card';
+    row.innerHTML = `
+      <div><label>Number</label><input type="text" data-f="n" value="${escAttr(s.n)}"></div>
+      <div><label>Label</label><input type="text" data-f="l" value="${escAttr(s.l)}"></div>
+    `;
+    row.querySelector('[data-f="n"]').addEventListener('input', e => s.n = e.target.value);
+    row.querySelector('[data-f="l"]').addEventListener('input', e => s.l = e.target.value);
+    el.appendChild(row);
+  });
+}
+
+function escAttr(str) {
+  return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
+// ---------- single-field image uploads ----------
+$('f-hero-bg-file').addEventListener('change', async e => {
+  if (!e.target.files[0]) return;
+  const path = await uploadImage(e.target.files[0]);
+  state.hero.bgImage = path;
+  $('f-hero-bg-preview').src = path;
+});
+$('f-about-photo-file').addEventListener('change', async e => {
+  if (!e.target.files[0]) return;
+  const path = await uploadImage(e.target.files[0]);
+  state.about.photo = path;
+  $('f-about-photo-preview').src = path;
+});
+$('f-donate-qr-file').addEventListener('change', async e => {
+  if (!e.target.files[0]) return;
+  const path = await uploadImage(e.target.files[0]);
+  state.donate.qrImage = path;
+  $('f-donate-qr-preview').src = path;
+});
+
+// ---------- pull simple text fields back into state before saving ----------
+function syncSimpleFields() {
+  state.hero.eyebrow = $('f-hero-eyebrow').value;
+  state.hero.headline = $('f-hero-headline').value;
+  state.hero.subhead = $('f-hero-subhead').value;
+
+  state.vision = $('f-vision').value;
+  state.mission = $('f-mission').value;
+  state.objectives = $('f-objectives').value.split('\n').map(s => s.trim()).filter(Boolean);
+
+  state.about.intro = $('f-about-intro').value;
+  state.about.badges = $('f-about-badges').value.split('\n').map(s => s.trim()).filter(Boolean);
+
+  state.contact.address = $('f-contact-address').value;
+  state.contact.email = $('f-contact-email').value;
+  state.contact.phones = $('f-contact-phones').value.split('\n').map(s => s.trim()).filter(Boolean);
+  state.contact.registration = $('f-contact-reg').value;
+
+  state.donate.note = $('f-donate-note').value;
+  state.donate.upiId = $('f-donate-upi').value;
+
+  state.partners = $('f-partners').value.split('\n').map(s => s.trim()).filter(Boolean);
+}
+
+// ---------- save ----------
+$('saveBtn').addEventListener('click', async () => {
+  const statusEl = $('saveStatus');
+  syncSimpleFields();
+  setStatus(statusEl, 'Saving to GitHub…', 'busy');
+  try {
+    const json = JSON.stringify(state, null, 2);
+    const result = await ghPut('content.json', utf8ToBase64(json), 'Update site content via site editor', contentSha);
+    contentSha = result.content.sha;
+    setStatus(statusEl, 'Saved! GitHub Pages will republish your site within 1–2 minutes.', 'ok');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    setStatus(statusEl, err.message, 'err');
+  }
+});
+</script>
+</body>
+</html>
