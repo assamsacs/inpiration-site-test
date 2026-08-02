@@ -38,6 +38,9 @@ async function loadContent() {
     }
   }
 
+  // ---- Logo ----
+  if (data.logo) document.getElementById('navLogo').src = data.logo;
+
   // ---- Hero ----
   const hero = document.getElementById('heroSection');
   const heroImages = data.hero.bgImages && data.hero.bgImages.length

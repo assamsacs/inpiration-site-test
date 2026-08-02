@@ -98,6 +98,13 @@
     <div class="status" id="saveStatus"></div>
 
     <fieldset>
+      <legend>Logo</legend>
+      <img class="thumb-preview" id="f-logo-preview" style="max-width:120px;">
+      <input type="file" id="f-logo-file" accept="image/*">
+      <p class="help">Shown in the top-left navigation bar on every page.</p>
+    </fieldset>
+
+    <fieldset>
       <legend>Hero banner</legend>
       <label>Eyebrow line</label><input type="text" id="f-hero-eyebrow">
       <label>Headline</label><textarea id="f-hero-headline" rows="2"></textarea>
@@ -260,8 +267,40 @@ function slugify(name) {
   return name.toLowerCase().replace(/[^a-z0-9.]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
+function resizeImageFile(file, maxDim = 1600, quality = 0.82) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if (Math.max(width, height) > maxDim) {
+          const scale = maxDim / Math.max(width, height);
+          width = Math.round(width * scale);
+          height = Math.round(height * scale);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        const mime = file.type === 'image/png' ? 'image/png' : 'image/jpeg';
+        canvas.toBlob(blob => {
+          if (!blob) { reject(new Error('Could not process this image file.')); return; }
+          resolve(new File([blob], file.name, { type: mime }));
+        }, mime, quality);
+      };
+      img.onerror = () => reject(new Error('Could not read this image file.'));
+      img.src = reader.result;
+    };
+    reader.onerror = () => reject(new Error('Could not read this image file.'));
+    reader.readAsDataURL(file);
+  });
+}
+
 async function uploadImage(file, folder = 'images') {
-  const base64 = await fileToBase64(file);
+  const resized = await resizeImageFile(file);
+  const base64 = await fileToBase64(resized);
   const ts = Date.now();
   const path = `${folder}/${ts}-${slugify(file.name)}`;
   await ghPut(path, base64, `Upload image via site editor: ${file.name}`);
@@ -300,6 +339,8 @@ $('reloadBtn').addEventListener('click', () => $('connectBtn').click());
 
 // ---------- render form from state ----------
 function renderForm() {
+  $('f-logo-preview').src = state.logo || 'images/logo.jpg';
+
   $('f-hero-eyebrow').value = state.hero.eyebrow;
   $('f-hero-headline').value = state.hero.headline;
   $('f-hero-subhead').value = state.hero.subhead;
@@ -379,9 +420,16 @@ function renderPrograms() {
     });
     card.querySelector('[data-f="image"]').addEventListener('change', async e => {
       if (!e.target.files[0]) return;
-      const path = await uploadImage(e.target.files[0]);
-      state.programs[i].image = path;
-      card.querySelector('img').src = path;
+      const statusEl = $('saveStatus');
+      setStatus(statusEl, 'Uploading photo…', 'busy');
+      try {
+        const path = await uploadImage(e.target.files[0]);
+        state.programs[i].image = path;
+        card.querySelector('img').src = path;
+        clearStatus(statusEl);
+      } catch (err) {
+        setStatus(statusEl, 'Photo upload failed: ' + err.message, 'err');
+      }
     });
     card.querySelector('.del').addEventListener('click', () => { state.programs.splice(i, 1); renderPrograms(); });
     el.appendChild(card);
@@ -463,11 +511,18 @@ function renderGallery() {
 $('addGalleryBtn').addEventListener('click', async () => {
   const file = $('galleryFile').files[0];
   if (!file) { alert('Choose a photo first.'); return; }
-  const path = await uploadImage(file);
-  state.gallery.push({ image: path, alt: $('galleryAlt').value || 'Inspiration program photo', size: '' });
-  $('galleryFile').value = '';
-  $('galleryAlt').value = '';
-  renderGallery();
+  const statusEl = $('saveStatus');
+  setStatus(statusEl, 'Uploading photo…', 'busy');
+  try {
+    const path = await uploadImage(file);
+    state.gallery.push({ image: path, alt: $('galleryAlt').value || 'Inspiration program photo', size: '' });
+    $('galleryFile').value = '';
+    $('galleryAlt').value = '';
+    renderGallery();
+    clearStatus(statusEl);
+  } catch (err) {
+    setStatus(statusEl, 'Photo upload failed: ' + err.message, 'err');
+  }
 });
 
 // ---- Approach ----
@@ -528,21 +583,48 @@ $('f-hero-bg-file').addEventListener('change', async e => {
     renderHeroImages();
     clearStatus(statusEl);
   } catch (err) {
-    setStatus(statusEl, err.message, 'err');
+    setStatus(statusEl, 'Photo upload failed: ' + err.message, 'err');
   }
   e.target.value = '';
 });
 $('f-about-photo-file').addEventListener('change', async e => {
   if (!e.target.files[0]) return;
-  const path = await uploadImage(e.target.files[0]);
-  state.about.photo = path;
-  $('f-about-photo-preview').src = path;
+  const statusEl = $('saveStatus');
+  setStatus(statusEl, 'Uploading photo…', 'busy');
+  try {
+    const path = await uploadImage(e.target.files[0]);
+    state.about.photo = path;
+    $('f-about-photo-preview').src = path;
+    clearStatus(statusEl);
+  } catch (err) {
+    setStatus(statusEl, 'Photo upload failed: ' + err.message, 'err');
+  }
 });
 $('f-donate-qr-file').addEventListener('change', async e => {
   if (!e.target.files[0]) return;
-  const path = await uploadImage(e.target.files[0]);
-  state.donate.qrImage = path;
-  $('f-donate-qr-preview').src = path;
+  const statusEl = $('saveStatus');
+  setStatus(statusEl, 'Uploading photo…', 'busy');
+  try {
+    const path = await uploadImage(e.target.files[0]);
+    state.donate.qrImage = path;
+    $('f-donate-qr-preview').src = path;
+    clearStatus(statusEl);
+  } catch (err) {
+    setStatus(statusEl, 'Photo upload failed: ' + err.message, 'err');
+  }
+});
+$('f-logo-file').addEventListener('change', async e => {
+  if (!e.target.files[0]) return;
+  const statusEl = $('saveStatus');
+  setStatus(statusEl, 'Uploading logo…', 'busy');
+  try {
+    const path = await uploadImage(e.target.files[0]);
+    state.logo = path;
+    $('f-logo-preview').src = path;
+    clearStatus(statusEl);
+  } catch (err) {
+    setStatus(statusEl, 'Logo upload failed: ' + err.message, 'err');
+  }
 });
 
 // ---------- pull simple text fields back into state before saving ----------
