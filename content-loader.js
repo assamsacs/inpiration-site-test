@@ -134,9 +134,18 @@ async function loadContent() {
   document.getElementById('partnerStrip').innerHTML = data.partners.map(p => `<span class="partner-chip">${p}</span>`).join('');
 
   // ---- Approach ----
+  document.getElementById('approachSubhead').textContent = data.approachSubhead || '';
+  const approachIcons = [
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c.7-3.4 3.4-5.6 6.5-5.6s5.8 2.2 6.5 5.6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.6c2.4.3 4.3 2.2 4.9 5"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12l2.5 2.5a2 2 0 0 0 2.8 0l4.2-4.2"/><path d="M3 11l4-4 4 2 3-3 4 4-3 3"/><path d="M14 17l1.5 1.5a2 2 0 0 0 2.8 0L21 16"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 4.5-4.5 2 2-4.5 4.5-2Z"/></svg>`
+  ];
   document.getElementById('approachGrid').innerHTML = data.approach.map((a, i) => `
     <div class="approach-item">
-      <div class="n">${String(i + 1).padStart(2, '0')}</div>
+      <div class="approach-icon">${approachIcons[i % approachIcons.length]}</div>
+      <span class="tag">${a.tag || ''}</span>
       <h4>${a.title}</h4>
       <p>${a.desc}</p>
     </div>
