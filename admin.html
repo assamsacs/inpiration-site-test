@@ -197,6 +197,7 @@
 </div>
 
 <div class="save-bar locked" id="saveBar">
+  <span id="saveBarStatus" style="font-family:var(--mono);font-size:12.5px;color:#cfe0e5;align-self:center;"></span>
   <button class="btn btn-outline" id="reloadBtn" type="button">Reload from GitHub</button>
   <button class="btn btn-primary" id="saveBtn" type="button">Save changes to site</button>
 </div>
@@ -213,8 +214,17 @@ const saveBar = $('saveBar');
 function setStatus(el, msg, type) {
   el.textContent = msg;
   el.className = 'status show ' + type;
+  const barStatus = $('saveBarStatus');
+  if (barStatus) {
+    barStatus.textContent = msg;
+    barStatus.style.color = type === 'err' ? '#ff9b7d' : (type === 'ok' ? '#8fe0a8' : '#cfe0e5');
+  }
 }
-function clearStatus(el) { el.className = 'status'; }
+function clearStatus(el) {
+  el.className = 'status';
+  const barStatus = $('saveBarStatus');
+  if (barStatus) barStatus.textContent = '';
+}
 
 // ---------- credential persistence (this browser only) ----------
 function loadSavedCreds() {
@@ -663,6 +673,7 @@ function syncSimpleFields() {
 // ---------- save ----------
 $('saveBtn').addEventListener('click', async () => {
   const statusEl = $('saveStatus');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   syncSimpleFields();
   setStatus(statusEl, 'Saving to GitHub…', 'busy');
   try {
@@ -670,7 +681,6 @@ $('saveBtn').addEventListener('click', async () => {
     const result = await ghPut('content.json', utf8ToBase64(json), 'Update site content via site editor', contentSha);
     contentSha = result.content.sha;
     setStatus(statusEl, 'Saved! GitHub Pages will republish your site within 1–2 minutes.', 'ok');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (err) {
     setStatus(statusEl, err.message, 'err');
   }
