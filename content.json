@@ -1,8 +1,8 @@
 {
   "logo": "inspiration-images/images/logo.jpg",
   "hero": {
-    "eyebrow": "Jorhat & Upper Assam · Since 2013",
-    "headline": "Sustainable inclusion for every citizen of Assam.",
+    "eyebrow": "Jorhat Assam · Since 2013",
+    "headline": "Sustainable inclusion for every citizen.",
     "subhead": "Inspiration is a registered voluntary organization working across health, environment, education, livelihoods, and disaster response — in direct partnership with government health systems, local institutions, and community volunteers.",
     "bgImages": [
       "inspiration-images/images/mobile-icic-van-camp.jpeg",
@@ -11,10 +11,22 @@
     ]
   },
   "stats": [
-    { "n": "2013", "l": "Founded & Registered" },
-    { "n": "6", "l": "Active Program Areas" },
-    { "n": "10+", "l": "Government & Institutional Partners" },
-    { "n": "3", "l": "Annual Reports Published" }
+    {
+      "n": "2013",
+      "l": "Founded & Registered"
+    },
+    {
+      "n": "6",
+      "l": "Active Program Areas"
+    },
+    {
+      "n": "10+",
+      "l": "Government & Institutional Partners"
+    },
+    {
+      "n": "3",
+      "l": "Annual Reports Published"
+    }
   ],
   "about": {
     "intro": "Established in 2013, Inspiration is a non-governmental organization dedicated to empowering marginalised communities through sustainable development initiatives. We work in close collaboration with local communities, government agencies, and fellow NGOs to drive positive change. Our approach emphasises participatory processes — prioritising the needs and voices of vulnerable populations — through community-based services, self-sustainable livelihood opportunities, and people-centred development. We believe true development is achieved only through the active participation of the people themselves: by the people, for the people.",
@@ -91,72 +103,248 @@
       "id": "y2526",
       "label": "2025–26 (current)",
       "items": [
-        { "date": "15 Jun 2026", "title": "Mobile ICTC Van Camp", "desc": "HIV/AIDS awareness and screening camp, Kabuganj, Assam, run with the Assam State AIDS Control Society." },
-        { "date": "2026", "title": "Community-Based HIV Screening Meeting", "desc": "Awareness meeting on HIV, Hepatitis B & C, and syphilis under TI Inspiration, Jorhat, with ASACS and NESETI OPC." },
-        { "date": "Jul 2026", "title": "Upper Assam Flood Relief", "desc": "Relief convoy from Guwahati to Sivasagar delivering essential supplies to flood-affected families." }
+        {
+          "date": "15 Jun 2026",
+          "title": "Mobile ICTC Van Camp",
+          "desc": "HIV/AIDS awareness and screening camp, Kabuganj, Assam, run with the Assam State AIDS Control Society."
+        },
+        {
+          "date": "2026",
+          "title": "Community-Based HIV Screening Meeting",
+          "desc": "Awareness meeting on HIV, Hepatitis B & C, and syphilis under TI Inspiration, Jorhat, with ASACS and NESETI OPC."
+        },
+        {
+          "date": "Jul 2026",
+          "title": "Upper Assam Flood Relief",
+          "desc": "Relief convoy from Guwahati to Sivasagar delivering essential supplies to flood-affected families."
+        }
       ]
     },
     {
       "id": "y2425",
       "label": "2024–25",
       "items": [
-        { "date": "14–15 Apr 2024", "title": "Bihu Celebration & Blood Donation Camp", "desc": "Traditional games and a free blood donation camp at the Inspiration office campus." },
-        { "date": "1 May 2024", "title": "May Day Observation", "desc": "International Workers' Day with the West Jorhat Construction Workers Union and Jorhat Tempo Workers Union, Arundoi School." },
-        { "date": "5 Jun 2024", "title": "World Environment Day", "desc": "500 quick-growing trees planted at Nabin Bordoloi College, Dhekiajuli, Titabor." },
-        { "date": "17 Jul 2024", "title": "Flood-Relief Health Camp", "desc": "Free health screening for flood-affected residents, Kachajan Tea Estate." },
-        { "date": "15 Aug 2024", "title": "Independence Day", "desc": "Tree plantation and youth football match, 3rd APBN playground, with Pachim Titabor Yuba Sangha." },
-        { "date": "2 Oct 2024", "title": "Gandhi Jyanti", "desc": "Quiz and art competition, Mariani Railway Station Auditorium." },
-        { "date": "14 Nov 2024", "title": "Children's Day", "desc": "Art, quiz, and essay-writing competitions for children." },
-        { "date": "21 & 24 Nov 2024", "title": "HIV/AIDS Awareness Programmes", "desc": "Two awareness sessions in West Titabor, the second with Surujmukhi Self Help Group." },
-        { "date": "1 Dec 2024", "title": "World AIDS Day", "desc": "Awareness camp and rally with ASACS Assam and JDHS Jorhat, at the Joint Director's Office." },
-        { "date": "1 Jan 2025", "title": "New Year Observance", "desc": "Tree plantation, blood donation campaign, and free health check-up camp." },
-        { "date": "26 Jan 2025", "title": "Republic Day", "desc": "Flag hoisted by President Partha Protim Dutta at the Inspiration office." }
+        {
+          "date": "14–15 Apr 2024",
+          "title": "Bihu Celebration & Blood Donation Camp",
+          "desc": "Traditional games and a free blood donation camp at the Inspiration office campus."
+        },
+        {
+          "date": "1 May 2024",
+          "title": "May Day Observation",
+          "desc": "International Workers' Day with the West Jorhat Construction Workers Union and Jorhat Tempo Workers Union, Arundoi School."
+        },
+        {
+          "date": "5 Jun 2024",
+          "title": "World Environment Day",
+          "desc": "500 quick-growing trees planted at Nabin Bordoloi College, Dhekiajuli, Titabor."
+        },
+        {
+          "date": "17 Jul 2024",
+          "title": "Flood-Relief Health Camp",
+          "desc": "Free health screening for flood-affected residents, Kachajan Tea Estate."
+        },
+        {
+          "date": "15 Aug 2024",
+          "title": "Independence Day",
+          "desc": "Tree plantation and youth football match, 3rd APBN playground, with Pachim Titabor Yuba Sangha."
+        },
+        {
+          "date": "2 Oct 2024",
+          "title": "Gandhi Jyanti",
+          "desc": "Quiz and art competition, Mariani Railway Station Auditorium."
+        },
+        {
+          "date": "14 Nov 2024",
+          "title": "Children's Day",
+          "desc": "Art, quiz, and essay-writing competitions for children."
+        },
+        {
+          "date": "21 & 24 Nov 2024",
+          "title": "HIV/AIDS Awareness Programmes",
+          "desc": "Two awareness sessions in West Titabor, the second with Surujmukhi Self Help Group."
+        },
+        {
+          "date": "1 Dec 2024",
+          "title": "World AIDS Day",
+          "desc": "Awareness camp and rally with ASACS Assam and JDHS Jorhat, at the Joint Director's Office."
+        },
+        {
+          "date": "1 Jan 2025",
+          "title": "New Year Observance",
+          "desc": "Tree plantation, blood donation campaign, and free health check-up camp."
+        },
+        {
+          "date": "26 Jan 2025",
+          "title": "Republic Day",
+          "desc": "Flag hoisted by President Partha Protim Dutta at the Inspiration office."
+        }
       ]
     },
     {
       "id": "y2324",
       "label": "2023–24",
       "items": [
-        { "date": "1 May 2023", "title": "May Day Observation", "desc": "International Workers' Day at the Community Hall, Bokahola Bagan, Jorhat." },
-        { "date": "5 Jun 2023", "title": "World Environment Day", "desc": "150 quick-growing trees planted near CKB College." },
-        { "date": "9 Jul 2023", "title": "Flood-Relief Health Camp", "desc": "Free health screening for flood-affected people, Namchungi 370 Government Primary School." },
-        { "date": "2 Oct 2023", "title": "Gandhi Jyanti", "desc": "Observance with felicitation of students who passed HSLC with distinction." },
-        { "date": "17 Oct 2023", "title": "Kati Bihu Observance", "desc": "Centrally organised in Titabor town, with an All-Assam letter-writing and quiz competition." },
-        { "date": "14 Nov 2023", "title": "Children's Day", "desc": "Art, quiz, and essay competitions, Cinamara Jatiya Bidyalaya." },
-        { "date": "1 Dec 2023", "title": "World AIDS Day", "desc": "Awareness camp and rally with ASACS Assam and JDHS Jorhat." },
-        { "date": "1 Jan 2024", "title": "New Year Observance", "desc": "Plantation, quiz, and song & dance competitions." },
-        { "date": "26 Jan 2024", "title": "Republic Day", "desc": "Flag hoisted by General Secretary Bina Dutta Bora." }
+        {
+          "date": "1 May 2023",
+          "title": "May Day Observation",
+          "desc": "International Workers' Day at the Community Hall, Bokahola Bagan, Jorhat."
+        },
+        {
+          "date": "5 Jun 2023",
+          "title": "World Environment Day",
+          "desc": "150 quick-growing trees planted near CKB College."
+        },
+        {
+          "date": "9 Jul 2023",
+          "title": "Flood-Relief Health Camp",
+          "desc": "Free health screening for flood-affected people, Namchungi 370 Government Primary School."
+        },
+        {
+          "date": "2 Oct 2023",
+          "title": "Gandhi Jyanti",
+          "desc": "Observance with felicitation of students who passed HSLC with distinction."
+        },
+        {
+          "date": "17 Oct 2023",
+          "title": "Kati Bihu Observance",
+          "desc": "Centrally organised in Titabor town, with an All-Assam letter-writing and quiz competition."
+        },
+        {
+          "date": "14 Nov 2023",
+          "title": "Children's Day",
+          "desc": "Art, quiz, and essay competitions, Cinamara Jatiya Bidyalaya."
+        },
+        {
+          "date": "1 Dec 2023",
+          "title": "World AIDS Day",
+          "desc": "Awareness camp and rally with ASACS Assam and JDHS Jorhat."
+        },
+        {
+          "date": "1 Jan 2024",
+          "title": "New Year Observance",
+          "desc": "Plantation, quiz, and song & dance competitions."
+        },
+        {
+          "date": "26 Jan 2024",
+          "title": "Republic Day",
+          "desc": "Flag hoisted by General Secretary Bina Dutta Bora."
+        }
       ]
     },
     {
       "id": "y2223",
       "label": "2022–23",
       "items": [
-        { "date": "1–11 Apr 2022", "title": "Bihu Dance Workshop", "desc": "An 11-day workshop at Assam Bhawan, Kolkata — the first of its kind among the city's diaspora community." },
-        { "date": "5 Jun 2022", "title": "World Environment Day", "desc": "Mass plantation programme, Mihiram Saikia Higher Secondary School." },
-        { "date": "26 Jun 2022", "title": "World Drug Day", "desc": "Awareness observance at CKB Commerce College with the student union." },
-        { "date": "11 Jul 2022", "title": "Free Health Screening Camp", "desc": "With the First Referral Unit, Titabor, at Chipaha Government Primary School." },
-        { "date": "13 Jul 2022", "title": "HIV/AIDS & Drug Abuse Awareness Camp", "desc": "Near Borhola police station and Bekajan weekly market." },
-        { "date": "15 Aug 2022", "title": "Independence Day", "desc": "Observed at Mihiram Saikia HS School with Padma Shri Jadav Payeng in attendance." },
-        { "date": "2 Oct 2022", "title": "Gandhi Jyanti", "desc": "Art and essay competition for students up to class eight." },
-        { "date": "14 Nov 2022", "title": "Children's Day", "desc": "Art, quiz, and cultural programs, Concept Junior College." },
-        { "date": "1 Dec 2022", "title": "World AIDS Day", "desc": "Awareness rally with Baptist Missionary College, Dholi, Titabor." },
-        { "date": "8 Mar 2023", "title": "International Women's Day", "desc": "Plantation, song competition, and food distribution at a local old-age home; two social workers felicitated." }
+        {
+          "date": "1–11 Apr 2022",
+          "title": "Bihu Dance Workshop",
+          "desc": "An 11-day workshop at Assam Bhawan, Kolkata — the first of its kind among the city's diaspora community."
+        },
+        {
+          "date": "5 Jun 2022",
+          "title": "World Environment Day",
+          "desc": "Mass plantation programme, Mihiram Saikia Higher Secondary School."
+        },
+        {
+          "date": "26 Jun 2022",
+          "title": "World Drug Day",
+          "desc": "Awareness observance at CKB Commerce College with the student union."
+        },
+        {
+          "date": "11 Jul 2022",
+          "title": "Free Health Screening Camp",
+          "desc": "With the First Referral Unit, Titabor, at Chipaha Government Primary School."
+        },
+        {
+          "date": "13 Jul 2022",
+          "title": "HIV/AIDS & Drug Abuse Awareness Camp",
+          "desc": "Near Borhola police station and Bekajan weekly market."
+        },
+        {
+          "date": "15 Aug 2022",
+          "title": "Independence Day",
+          "desc": "Observed at Mihiram Saikia HS School with Padma Shri Jadav Payeng in attendance."
+        },
+        {
+          "date": "2 Oct 2022",
+          "title": "Gandhi Jyanti",
+          "desc": "Art and essay competition for students up to class eight."
+        },
+        {
+          "date": "14 Nov 2022",
+          "title": "Children's Day",
+          "desc": "Art, quiz, and cultural programs, Concept Junior College."
+        },
+        {
+          "date": "1 Dec 2022",
+          "title": "World AIDS Day",
+          "desc": "Awareness rally with Baptist Missionary College, Dholi, Titabor."
+        },
+        {
+          "date": "8 Mar 2023",
+          "title": "International Women's Day",
+          "desc": "Plantation, song competition, and food distribution at a local old-age home; two social workers felicitated."
+        }
       ]
     }
   ],
   "gallery": [
-    { "image": "inspiration-images/images/mobile-icic-van-camp.jpeg", "alt": "Mobile ICTC van camp", "size": "wide" },
-    { "image": "inspiration-images/images/bihu-workshop.jpeg", "alt": "Bihu dance workshop", "size": "tall" },
-    { "image": "inspiration-images/images/world-aids-day.jpeg", "alt": "World AIDS Day rally", "size": "" },
-    { "image": "inspiration-images/images/community-hiv-screening.jpeg", "alt": "Community HIV screening meeting", "size": "" },
-    { "image": "inspiration-images/images/env-day-tree-plantation.jpeg", "alt": "Tree plantation drive", "size": "" },
-    { "image": "inspiration-images/images/childrens-day.jpeg", "alt": "Children's Day celebration", "size": "wide" },
-    { "image": "inspiration-images/images/flood-relief-team.jpeg", "alt": "Flood relief volunteer team", "size": "" },
-    { "image": "inspiration-images/images/relief-kit-distribution.jpeg", "alt": "Relief kit distribution", "size": "" },
-    { "image": "inspiration-images/images/flood-health-camp.jpeg", "alt": "Health camp for flood-affected families", "size": "" },
-    { "image": "inspiration-images/images/independence-day.jpeg", "alt": "Independence Day celebration", "size": "" },
-    { "image": "inspiration-images/images/bihu-blood-donation.jpeg", "alt": "Blood donation camp during Bihu", "size": "" }
+    {
+      "image": "inspiration-images/images/mobile-icic-van-camp.jpeg",
+      "alt": "Mobile ICTC van camp",
+      "size": "wide"
+    },
+    {
+      "image": "inspiration-images/images/bihu-workshop.jpeg",
+      "alt": "Bihu dance workshop",
+      "size": "tall"
+    },
+    {
+      "image": "inspiration-images/images/world-aids-day.jpeg",
+      "alt": "World AIDS Day rally",
+      "size": ""
+    },
+    {
+      "image": "inspiration-images/images/community-hiv-screening.jpeg",
+      "alt": "Community HIV screening meeting",
+      "size": ""
+    },
+    {
+      "image": "inspiration-images/images/env-day-tree-plantation.jpeg",
+      "alt": "Tree plantation drive",
+      "size": ""
+    },
+    {
+      "image": "inspiration-images/images/childrens-day.jpeg",
+      "alt": "Children's Day celebration",
+      "size": "wide"
+    },
+    {
+      "image": "inspiration-images/images/flood-relief-team.jpeg",
+      "alt": "Flood relief volunteer team",
+      "size": ""
+    },
+    {
+      "image": "inspiration-images/images/relief-kit-distribution.jpeg",
+      "alt": "Relief kit distribution",
+      "size": ""
+    },
+    {
+      "image": "inspiration-images/images/flood-health-camp.jpeg",
+      "alt": "Health camp for flood-affected families",
+      "size": ""
+    },
+    {
+      "image": "inspiration-images/images/independence-day.jpeg",
+      "alt": "Independence Day celebration",
+      "size": ""
+    },
+    {
+      "image": "inspiration-images/images/bihu-blood-donation.jpeg",
+      "alt": "Blood donation camp during Bihu",
+      "size": ""
+    }
   ],
   "partners": [
     "Assam State AIDS Control Society (ASACS)",
@@ -180,7 +368,7 @@
     {
       "tag": "Method",
       "title": "Outreach-first",
-      "desc": "Field teams work directly in tea-garden lines, flood-affected villages, and weekly markets — meeting communities where they already are."
+      "desc": "\"We prioritise direct, on-the-ground engagement — going to communities rather than expecting them to come to us.\""
     },
     {
       "tag": "Partnership",
@@ -195,18 +383,20 @@
     {
       "tag": "Advisory",
       "title": "Technical guidance",
-      "desc": "Supported by an honorary technical advisor who guides the design, planning, and implementation of our projects and activities."
+      "desc": "Supported by honorary technical advisors who guides the design, planning, and implementation of our projects and activities."
     }
   ],
   "donate": {
-    "note": "Inspiration is a registered society (Reg. No. JOR/238/F/13). Donations support our health camps, flood relief convoys, and community programs across Jorhat and Upper Assam.",
+    "note": "Inspiration is a registered society (Reg. No. JOR/238/F/13). Donations support our health camps, flood relief convoys, and community programs across Assam.",
     "qrImage": "inspiration-images/images/upi-qr-donate.jpeg",
     "upiId": "inspiration@ucobank"
   },
   "contact": {
     "address": "Chipaha Satra, Near 3rd APBN, Titabor, Jorhat, Assam, Pin 785630",
     "email": "inspiration3953@gmail.com",
-    "phones": ["+91 96782 68970", "+91 75768 89844", "+91 80116 66263"],
+    "phones": [
+      "+91 9395578497"
+    ],
     "registration": "JOR/238/F/13, Societies Registration Act XXI of 1860 (2013–14)"
   }
 }
