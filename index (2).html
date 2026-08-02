@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspiration — Registered Society, Jorhat, Assam</title>
+<meta name="description" content="Inspiration is a registered voluntary organization (Reg. No. JOR/238/F/13) working across Jorhat and Upper Assam on public health, environment, education, and disaster response since 2013.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="u-links" id="utilContact"></div>
+    <div class="u-links"><span id="utilReg"></span></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="site-header">
+  <nav class="nav">
+    <a href="#top" class="brand">
+      <img src="images/logo.jpg" alt="Inspiration logo" style="width:40px;height:40px;object-fit:contain;border-radius:6px;">
+      <span class="brand-text">Inspiration<small>Registered Society &middot; Jorhat, Assam</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#donate" class="btn btn-primary">Donate</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="heroSection" style="padding:0;">
+    <div class="hero-inner wrap" id="heroContent">
+      <p class="loading-note">Loading…</p>
+    </div>
+  </section>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="wrap" id="statStrip"></div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Who we are</span>
+        <h2>A registered voluntary organization, working since 2013</h2>
+        <p id="aboutIntro"></p>
+        <div class="badge-row" id="aboutBadges"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="mv-card">
+            <h3>Vision</h3>
+            <p id="visionText"></p>
+          </div>
+          <div class="mv-card">
+            <h3>Mission</h3>
+            <p id="missionText"></p>
+          </div>
+          <ul class="obj-list" id="objectivesList"></ul>
+        </div>
+        <div class="about-photo reveal">
+          <img id="aboutPhoto" src="" alt="Inspiration community program">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- PROGRAMS -->
+  <section id="programs" class="bg-deep">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What we do</span>
+        <h2>Six program areas, drawn directly from our activity record</h2>
+        <p>Since 2013, our work has spanned public health, disaster response,
+          environment, education, and social welfare — delivered through both
+          government-linked programming and community-led initiatives.</p>
+      </div>
+      <div class="program-grid reveal" id="programGrid"></div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ACTIVITIES / TIMELINE -->
+  <section id="activities">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Activity record</span>
+        <h2>What we've done, year by year</h2>
+        <p>Drawn from our published annual reports and current-year field activity.</p>
+      </div>
+      <div class="tab-row reveal" id="tabRow" role="tablist"></div>
+      <div id="timelinePanels"></div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="bg-deep">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">In the field</span>
+        <h2>Photo gallery</h2>
+        <p>A selection of moments from our health camps, relief work, and community programs.</p>
+      </div>
+      <div class="gallery-grid reveal" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- PARTNERS -->
+  <section id="partners">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Working within existing systems</span>
+        <h2>Partner agencies &amp; institutions</h2>
+        <p>Our programs are designed to strengthen — not duplicate — government
+          health infrastructure and local institutions already present in Assam.</p>
+      </div>
+      <div class="partner-strip reveal" id="partnerStrip"></div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="bg-navy">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">How we work</span>
+        <h2>Our approach</h2>
+      </div>
+      <div class="approach-grid reveal" id="approachGrid"></div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate" class="bg-deep">
+    <div class="wrap donate-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--coral);">Support our work</span>
+        <h2 style="font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,3vw,2.3rem);color:var(--navy);margin:10px 0 16px;">Every contribution reaches the field directly</h2>
+        <p id="donateNote" style="color:var(--grey);font-size:16px;max-width:52ch;"></p>
+        <ul class="donate-note-list" style="margin-top:24px;">
+          <li style="color:var(--ink);">Scan the QR code or pay directly via UPI</li>
+          <li style="color:var(--ink);">Even a small contribution — one bottle of water, one rupee — matters</li>
+          <li style="color:var(--ink);">For CSR or institutional partnerships, contact us directly</li>
+        </ul>
+      </div>
+      <div class="reveal" style="display:flex;justify-content:center;">
+        <div class="qr-card">
+          <img id="qrImage" src="" alt="UPI QR code to donate to Inspiration" style="max-width:220px;margin:0 auto 14px;">
+          <p style="font-family:var(--mono);font-size:12px;color:var(--grey);margin:0 0 8px;">Or pay to UPI ID</p>
+          <span class="upi-id" id="upiIdText"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <div class="section-head" style="margin-bottom:24px;">
+          <span class="eyebrow">Contact</span>
+          <h2>Talk to us</h2>
+          <p>For partnership, volunteering, or CSR enquiries, reach out directly or use the form.</p>
+        </div>
+        <dl class="contact-info" id="contactInfo"></dl>
+      </div>
+      <div class="reveal">
+        <!-- This form currently does nothing on its own. Sign up free at
+             https://formspree.io and replace the action URL below to make it
+             actually deliver messages to your inbox. -->
+        <form class="contact-form" action="https://formspree.io/f/REPLACE_ME" method="POST">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h5>Inspiration</h5>
+        <p>A registered voluntary organization working across Jorhat and
+          Upper Assam since 2013 — on public health, environment, education,
+          livelihoods, and disaster response.</p>
+      </div>
+      <div>
+        <h5>Quick links</h5>
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#activities">Activities</a>
+        <a href="#donate">Donate</a>
+      </div>
+      <div>
+        <h5>Registered office</h5>
+        <p id="footerAddress"></p>
+        <a id="footerEmail" href=""></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Inspiration &middot; <span id="footerReg"></span></span>
+      <span>Registered under Societies Registration Act XXI of 1860</span>
+    </div>
+  </div>
+</footer>
+
+<script src="content-loader.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
