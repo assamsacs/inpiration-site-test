@@ -176,15 +176,28 @@ header.site-header {
 /* ---------- hero ---------- */
 .hero {
   position: relative;
+  overflow: hidden;
   min-height: 560px;
   display: flex;
   align-items: flex-end;
-  background: linear-gradient(180deg, rgba(9,37,48,0.35) 0%, rgba(9,37,48,0.55) 55%, rgba(9,37,48,0.92) 100%);
+  color: #fff;
+}
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
-  color: #fff;
+  opacity: 0;
+  transition: opacity 1.4s ease;
 }
+.hero-bg-layer.active { opacity: 1; }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9,37,48,0.35) 0%, rgba(9,37,48,0.55) 55%, rgba(9,37,48,0.92) 100%);
+}
+.hero-inner { position: relative; z-index: 2; }
 .loading-note { font-family: var(--mono); font-size: 12px; color: var(--grey); padding: 40px 24px; text-align: center; }
 .hero-inner { padding: 72px 0 44px; width: 100%; }
 .hero .eyebrow {
